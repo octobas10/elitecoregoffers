@@ -1,5 +1,7 @@
 # CodeIgniter cache
 application/cache/*
+application/config/config.php
+application/config/database.php
 !application/cache/index.html
 !application/cache/.htaccess
 
