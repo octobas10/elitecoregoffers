@@ -1,0 +1,11 @@
+# CodeIgniter cache
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+# Sessions
+application/cache/session/*
+
+# Logs
+application/logs/*
+!application/logs/index.html

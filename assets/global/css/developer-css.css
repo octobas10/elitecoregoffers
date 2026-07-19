@@ -1,0 +1,218 @@
+/*	STATE OVERVIEW
+	==========================================*/
+
+	.state-overview .symbol, .state-overview .value {
+	    display: inline-block;
+	    text-align: center;
+	}
+
+	.state-overview .value  {
+	    float: right;
+
+	}
+
+	.state-overview .value h1, .state-overview .value p  {
+	    margin: 0;
+	    padding: 0;
+	    color: #c6cad6;
+	}
+
+	.state-overview .value h1 {
+	    font-weight: 300;
+	}
+
+	.state-overview .symbol i {
+	    color: #fff;
+	    font-size: 50px;
+	    -webkit-border-radius: 100%;
+	       -moz-border-radius: 100%;
+	        -ms-border-radius: 100%;
+	         -o-border-radius: 100%;
+	    		border-radius: 100%;
+	    -webkit-border: 2px dotted #fff;
+	       -moz-border: 2px dotted #fff;
+	        -ms-border: 2px dotted #fff;
+	         -o-border: 2px dotted #fff;
+				border: 2px dotted #fff;
+		width: 85px;
+		height: 85px;
+		padding-top: 17px;
+	}
+
+	.state-overview .symbol {
+	    width: 40%;
+	    padding: 25px 15px;
+	    -webkit-border-radius: 4px 0px 0px 4px;
+	       -moz-border-radius: 4px 0px 0px 4px;
+	        -ms-border-radius: 4px 0px 0px 4px;
+	         -o-border-radius: 4px 0px 0px 4px;
+	    		border-radius: 4px 0px 0px 4px;
+	}
+
+	.state-overview .value {
+	    width: 58%;
+	    padding-top: 31px;
+	}
+
+	.state-overview .terques {
+	    background: #1abc9c;
+	}
+
+	.state-overview .red {
+	    background: #e74c3c;
+	}
+
+	.state-overview .yellow {
+	    background: #f1c40f;
+	}
+
+	.state-overview .purple {
+	    background: #9b59b6;
+	}
+
+	.state-overview section.panel{
+		border: none;
+		background-color: #f2f2f2;
+	}
+	
+/*offer template css*/
+
+#sortable {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 600px;
+	border: 1px solid #cccccc;
+	min-height: 400px;
+	height:100%;
+	background:white;
+	float:left;
+}
+
+#sortable li {
+	margin: 0 3px 3px 3px;
+	padding: 0.4em;
+	padding-left: 1.5em;
+	font-size: 1.4em;
+	min-width:200px;
+	min-height:100px;
+	float: left;
+	word-break: break-all;
+}
+
+#sortable li span {
+	position: absolute;
+	margin-left: -1.3em;
+}
+.editable{ background:red;}
+
+#formbuilder ul li {width:100%;}
+#formbuilder ul li .legend strong{font-size:12px;font-weight:bold;}
+#formbuilder ul li .legend span,#formbuilder .false-label,#formbuilder .add-area,#formbuilder .remove,#formbuilder ul li .legend a{font-size:12px;  padding-right: 50px;  float: right;}
+#formbuilder ol {list-style:decimal;}
+#formbuilder ol li {width:100%;}
+
+#formbuilder .frm-elements label {font-size:14px;margin-top: 8px;}
+#formbuilder .frm-elements input[type=text]{height:24px;}
+.frmb li{margin: 0 !important;  padding: 0px !important;}
+/*-------------------------------
+-------------------------------*/
+
+.mrtp10{margin-top:10px;}
+.mrbt10{margin-bottom:10px;}	
+#form_sample_2 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{margin-left:-8px;}
+div.radio input{  opacity: inherit;}
+
+
+/* Apply these styles only when #preview-pane has
+   been placed within the Jcrop widget */
+#preview-pane {
+  display: block;
+  position: absolute;
+  z-index: 2000;
+  right: -200px;
+  padding: 6px;
+  border: 1px rgba(0, 0, 0, 0.4) solid;
+  background-color: white;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1024px) {
+  #preview-pane {
+    right: 0;
+  }
+}
+/* The Javascript code will set the aspect ratio of the crop
+   area based on the size of the thumbnail preview,
+   specified here */
+#preview-pane .preview-container {
+  width: 175px;
+  height: 150px;
+  overflow: hidden;
+}
+
+#demo7 {
+  background-color: #eee;
+  width: 500px;
+  height: 330px;
+  font-size: 24px;
+  font-weight: 300;
+  display: block;
+}
+.border-none{border:none !important;}
+.mrleftn17{margin-left:-17px;}
+.pagination .current a{
+  color: #23527c;
+  background-color: #eee;
+  border-color: #ddd;
+  }
+/*Table shorting CSS*/
+table.tablesorter thead tr .header {
+	background-image: url(../plugins/datatables/media/images/sort_both.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(../plugins/datatables/media/images/sort_desc.png);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(../plugins/datatables/media/images/sort_asc.png);
+}
+/*
+table.tablesorter thead tr th {
+	background-color:#E6EEEE;
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+  background-color: #ccc;
+}*/
+.pagination{  padding: 0 10px;}
+/********************/
+
+.request-data-td{width: 35%;  word-break: break-all;}
+
+.page-header .page-header-top .page-logo {padding :10px 0;}
+.page-header {height:145px !important;}
+.page-header .page-header-top { height: 93px !important;}
+
+/*FOR SHOW EXTRA OFFER DATA CONTENT*/
+tr .details-control {
+  background: url('../img/details_open.png') no-repeat center center;
+  cursor: pointer;
+}
+.details .details-control {
+  background: url('../img/details_close.png') no-repeat center center !important;
+}
+.other_field{margin: 3px 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 2px;
+  background-color: #EFF3F8;}
+.page-logo img {
+  width: 310px;
+} 
