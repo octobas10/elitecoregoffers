@@ -16,11 +16,9 @@ class User extends CI_Controller {
 	public function login()
 	{
 		$data['page_title'] = "Login Page";
-		
 		if($this->input->post())
 		{
 			$this->load->library('form_validation');
-			
 			// Check validation for user input in SignUp form
 			$this->form_validation->set_rules('username', 'Username', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -28,7 +26,7 @@ class User extends CI_Controller {
 			if ($this->form_validation->run() == FALSE) 
 			{
 				$this->session->set_flashdata('err-msg',"Invalid username or password");
-				redirect(base_url());exit;
+				redirect(site_url('user/login'));
 			} 
 			else 
 			{
@@ -39,15 +37,16 @@ class User extends CI_Controller {
 					$this->session->set_userdata('user_detail',$check);
 					//echo"<pre>";print_r($this->session->userdata);echo"</pre>";exit('123');
 					$this->session->set_flashdata('succ-msg',"Login successfull");
-					redirect(base_url()."offer/list_offers");exit;
+					redirect(site_url('offer/list_offers'));exit;
 				}
 				else
 				{
 					$this->session->set_flashdata('err-msg',"Invalid username or password");
-					redirect(base_url());exit;
+					redirect(site_url('user/login'));
 				}
 			}			
 		}
+		//echo '<pre>';print_r($data);exit;
 		$this->template->load('template_login','user/login',$data);		
 	}
 	
@@ -66,7 +65,7 @@ class User extends CI_Controller {
 				$registeredOfferData = $this->db->get("offer_data");
 				$registeredOfferData = $registeredOfferData->row();
 				if(!empty($registeredOfferData) && $registeredOfferData -> double_opt_in_checked == '1'){
-					redirect(base_url()."user/login");
+					redirect(site_url('user/login'));
 					exit;
 				}
 				
@@ -74,7 +73,7 @@ class User extends CI_Controller {
                 $this->db->where('id',$_GET['od']);
 				$sql = $this->db->update("offer_data",$dbdata);
 				if($sql == false){
-					redirect(base_url()."user/login");
+					redirect(site_url('user/login'));
 					exit;
 				}
             }
@@ -91,10 +90,10 @@ class User extends CI_Controller {
 				//$this->session->set_flashdata('getOfferData',$getOfferData);
 				$this->load->view('offer/confirmation',$getOfferData);	
 			}else{
-				redirect(base_url()."user/login");
+				redirect(site_url('user/login'));
 			}			
 	    }else{
-			redirect(base_url()."user/login");
+			redirect(site_url('user/login'));
 		}
 	}
 	
@@ -112,7 +111,6 @@ class User extends CI_Controller {
 	{
 		check_login();	
 		$data['page_title'] = "Dashboard";
-		
 		//get chart data
 		$get_data = $this->db->query("SELECT date_created,SUM(displayed) as displayed,SUM(submitted)as submitted FROM `".SITE_OFFERS_TRANS_TABLE."` WHERE date_created > DATE_SUB(NOW(), INTERVAL 15 DAY) GROUP BY date_created");
 		$get_data = $get_data->result();
@@ -150,7 +148,7 @@ class User extends CI_Controller {
 		if(!isset($get_session['user_detail']->id) && empty($get_session['user_detail']->id))
 		{
 			$this->session->set_flashdata('err-msg',"Invalid user. Make login first.");
-			redirect(base_url());exit;
+			redirect(site_url('user/login'));
 		}
 		
 		//Set user ID

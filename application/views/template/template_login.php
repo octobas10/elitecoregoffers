@@ -66,7 +66,7 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="<?php echo base_url();?>user/login" method="post">
+	<form class="login-form" action="<?php echo site_url('user/login'); ?>" method="post">
 		<?php $this->load->view('template/alert_messages');?>
 		<h3 class="form-title">Sign In</h3>
 		<div class="alert alert-danger display-hide">

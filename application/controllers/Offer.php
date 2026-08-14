@@ -5,12 +5,12 @@ class Offer extends CI_Controller {
 		parent::__construct();
 		$this->load->model('General_model');
 		$this->load->model('Mysites_model');
-		if($this->router->fetch_method() != 'offer_data_submit'){
+		if($this->router->fetch_method() != 'list_offers'){
 			check_login();
 		}
 	}
 	public function index(){
-		redirect(base_url().'offer/list_offers');
+		redirect(site_url('offer/list_offers'));
 	}
 	public function add_offer($id=null){
 		$data['page_title'] = "Offer Page";
@@ -159,7 +159,7 @@ class Offer extends CI_Controller {
 			else{	
 				$this->session->set_flashdata('err-msg',"Some error occurs during database operation");	
 			}
-			redirect(base_url()."offer/list_offers");
+			redirect(site_url('offer/list_offers'));
 		}
 		$this->template->load('template_default','offer/add_offer',$data);
 	}
@@ -177,7 +177,7 @@ class Offer extends CI_Controller {
 		}else{
 			$this->session->set_flashdata('err-msg',"Error while deleting data");
 		}
-		redirect(base_url().'offer/list_offers');
+		redirect(site_url('offer/list_offers'));
 	}
 	/*
 	 * Pause offer
@@ -194,7 +194,7 @@ class Offer extends CI_Controller {
 		}else{
 			$this->session->set_flashdata('err-msg',"Error while deleting data");
 		}
-		redirect(base_url().'offer/list_offers');
+		redirect(site_url('offer/list_offers'));
 	}
 	/*
 	 * Unpause offer
@@ -209,13 +209,13 @@ class Offer extends CI_Controller {
 		}else{
 			$this->session->set_flashdata('err-msg',"Error while deleting data");
 		}
-		redirect(base_url().'offer/list_offers');
+		redirect(site_url('offer/list_offers'));
 	}
 	/*
 	 * List offers
 	 */
 	public function list_offers(){
-		//echo"<pre>";print_r($this->session->userdata);echo"</pre>";exit('123');
+		//echo"<pre>.218..";print_r($this->session->userdata);echo"</pre>";exit('123');
 		$data['page_title'] = "List Offers";
 		//get clients
 		$get_clients = $this->General_model->get_records('clients',array('id'=>'DESC'));
@@ -453,7 +453,7 @@ class Offer extends CI_Controller {
 				switch ($getOfferData->transfer_method) {
 					case "transfer_method_post":	
 							$url = $getOfferData->http_post_url;							
-							if(empty($url)) { continue;}
+							if(empty($url)) { continue 2;}
 							
 							$req_data = http_build_query($postFields);
 							$req_data = str_replace('%5B0%5D=','=',$req_data);
@@ -474,7 +474,7 @@ class Offer extends CI_Controller {
 						break;
 					case "transfer_method_get":
 							$url = $getOfferData->http_get_url;
-							if(empty($url)) { continue;}
+							if(empty($url)) { continue 2;}
 							$req_data = http_build_query($postFields);
 							$req_data = str_replace('%5B0%5D=','=',$req_data);
 							$client_response = $this->doPut($url,$req_data,"GET");
@@ -786,7 +786,7 @@ class Offer extends CI_Controller {
 							//echo 'test123';exit;
 							//$tmp_data['send_url'] = $getOfferData->http_post_url;
 							$url = $getOfferData->http_post_url;							
-							if(empty($url)) { continue;}
+							if(empty($url)) { break;}
 							$req_data = http_build_query($postFields);
 							$req_data = str_replace('%5B0%5D=','=',$req_data);
 							//$tmp_data['send_url'] = $tmp_data['send_url'].'?'.$req_data;
@@ -810,7 +810,7 @@ class Offer extends CI_Controller {
 					case "transfer_method_get":			
 							//$tmp_data['send_url'] = $getOfferData->http_get_url;
 							$url = $getOfferData->http_get_url;
-							if(empty($url)) { continue;}
+							if(empty($url)) { break;}
 							$req_data = http_build_query($postFields);
 							$req_data = str_replace('%5B0%5D=','=',$req_data);
 							//$tmp_data['send_url'] = $tmp_data['send_url'].'?'.$req_data;
@@ -830,7 +830,7 @@ class Offer extends CI_Controller {
 							$tmp_data['status']               = $status;
 						break;
 					case "transfer_method_email":
-							if(empty($getOfferData->transfer_email)) { continue;}	
+							if(empty($getOfferData->transfer_email)) { break;}	
 							$req_data = http_build_query($postFields);
 							$req_data = str_replace('%5B0%5D=','=',$req_data);
 							//Prepare Offer Trans Data
@@ -846,7 +846,7 @@ class Offer extends CI_Controller {
 						break;
 					case "transfer_method_ftp":
 						//echo"<pre>";print_r($_POST);echo"</pre>";exit('email');
-						if(empty($getOfferData->ftp_host_name) || empty($getOfferData->ftp_login_name) || empty($getOfferData->ftp_login_password) ) { continue;}
+						if(empty($getOfferData->ftp_host_name) || empty($getOfferData->ftp_login_name) || empty($getOfferData->ftp_login_password) ) { break;}
 						$req_data = http_build_query($postFields);
 						$req_data = str_replace('%5B0%5D=','=',$req_data);
 						//Prepare Offer Trans Data
